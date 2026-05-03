@@ -1,28 +1,30 @@
 import React from 'react'
+import './styles.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Services from './components/Services'
+import Footer from './components/Footer'
+import Home from './pages/Home'
+import Services from './pages/Services'
+import Gallery from './pages/Gallery'
+import Offers from './pages/Offers'
+import About from './pages/About'
+import Contact from './pages/Contact'
 
 export default function App() {
     return (
-        <div className="app-root">
-            <Navbar />
-            <main>
-                <Hero />
-                <Services />
-            </main>
-            <footer className="site-footer">
-                <div className="footer-inner">
-                    <div className="footer-left">
-                        <div className="logo-circle">A</div>
-                        <div>
-                            <div className="tagline">Family Salon | Bridal Studio & Academy</div>
-                        </div>
-                    </div>
-                    <div className="footer-center">© 2026 Anuradha's Family Salon & Spa</div>
-                    <div className="footer-right">Follow us</div>
-                </div>
-            </footer>
-        </div>
+        <BrowserRouter>
+            <div className="app-root">
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/services" element={<Services />} />
+                    <Route path="/offers" element={<Offers />} />
+                    <Route path="/gallery" element={<Gallery />} />
+                    <Route path="/contact" element={<Contact />} />
+                </Routes>
+                <Footer />
+            </div>
+        </BrowserRouter>
     )
 }

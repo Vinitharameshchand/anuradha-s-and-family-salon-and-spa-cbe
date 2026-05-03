@@ -1,33 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import { Link, NavLink } from "react-router-dom";
+import { Calendar } from "lucide-react";
 
 export default function Navbar() {
-    const [scrolled, setScrolled] = useState(false)
-    useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 20)
-        window.addEventListener('scroll', onScroll)
-        return () => window.removeEventListener('scroll', onScroll)
-    }, [])
-
     return (
-        <header className={`site-nav ${scrolled ? 'solid' : ''}`}>
-            <div className="nav-inner">
-                <div className="nav-left">
-                    <div className="logo-circle">
-                        <span>A</span>
-                    </div>
-                </div>
-                <nav className="nav-center">
-                    <a href="#">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#services">Services</a>
-                    <a href="#offers">Offers</a>
-                    <a href="#gallery">Gallery</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-                <div className="nav-right">
-                    <button className="btn primary">Book Appointment</button>
-                </div>
-            </div>
+        <header className="navbar">
+            <Link to="/" className="logoCircle">
+                <span>ANURADHA'S</span>
+                <small>Family Salon & Spa</small>
+            </Link>
+
+            <nav>
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/about">About Us</NavLink>
+                <NavLink to="/services">Services</NavLink>
+                <NavLink to="/offers">Offers</NavLink>
+                <NavLink to="/gallery">Gallery</NavLink>
+                <NavLink to="/contact">Contact</NavLink>
+            </nav>
+
+            <Link to="/contact" className="goldBtn">
+                <Calendar size={17} />
+                Book Appointment
+            </Link>
         </header>
-    )
+    );
 }
